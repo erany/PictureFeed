@@ -2,17 +2,21 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     main = require('./main'),
+	bodyParser = require('body-parser'),
+	//logger = require('morgan') , 
     app = express();
 
-app.use(express.logger("dev"));
+//app.use(logger("dev"));
 
-app.use(express.bodyParser({
-    uploadDir: __dirname + '/uploads',
-    keepExtensions: true
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.use(express.methodOverride());
-app.use(app.router);
+app.set('uploadDir',  __dirname + '/uploads');
+app.set('keepExtensions',  true);
+
+
+//app.use(express.methodOverride());
+//app.use(app.router);
 app.use(express.static(path.join(__dirname, './uploads')));
 
 app.post('/images', main.addImage); // endpoint to post new images

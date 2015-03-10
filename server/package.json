@@ -6,7 +6,9 @@
         "start": "node server.js"
     },
     "dependencies": {
-        "express": "latest",
-        "mongodb": "latest"
+        "express": "*",
+        "mongodb": "*" , 
+		"body-parser":"*"  
+		
     }
 }
