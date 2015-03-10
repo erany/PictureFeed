@@ -6,7 +6,7 @@ var fs = require('fs'),
 // Create the "uploads" folder if it doesn't exist
 
 
-path.exists(__dirname + '/uploads', function (exists) {
+path.existsSync(__dirname + '/uploads', function (exists) {
     if (!exists) {
         console.log('Creating directory ' + __dirname + '/uploads');
         fs.mkdir(__dirname + '/uploads', function (err) {
