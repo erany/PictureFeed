@@ -1,9 +1,12 @@
 var fs = require('fs'),
+	path = require('path') , 
     MongoClient = require('mongodb').MongoClient,
     db;
 
 // Create the "uploads" folder if it doesn't exist
-fs.exists(__dirname + '/uploads', function (exists) {
+
+
+fs.existsSync(__dirname + '/uploads', function (exists) {
     if (!exists) {
         console.log('Creating directory ' + __dirname + '/uploads');
         fs.mkdir(__dirname + '/uploads', function (err) {
