@@ -63,5 +63,6 @@ exports.addImage = function(req, res, next) {
         }
         res.json(image);
     });
-
+	
+	next();
 };

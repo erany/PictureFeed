@@ -27,16 +27,8 @@ app.set('uploadDir',  __dirname + '/uploads');
 app.set('keepExtensions',  true);
 
 
-app.route('/images').post(function(req, res, next) {
-	console.log('%s %s %s', req.method, req.url, req.path);
+app.route('/images').post(main.addImage)  ; 
 	
-	main.addImage ; 
-	
-	console.log('%s', req.files);
-	
-	next();
-})
-
 
 
 //app.post('/images', main.addImage); // endpoint to post new images
