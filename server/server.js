@@ -9,6 +9,8 @@ var express = require('express'),
 	//logger = require('morgan') , 
     app = express();
 
+var router = express.Router() ; 
+	
 //app.use(logger("dev"));
 
 app.use(cookieParser()) ;
@@ -25,7 +27,13 @@ app.set('uploadDir',  __dirname + '/uploads');
 app.set('keepExtensions',  true);
 
 
-app.post('/images', main.addImage); // endpoint to post new images
+app.route('/images').post(function(req, res, next) {
+	main.addImage ; 
+})
+
+
+
+//app.post('/images', main.addImage); // endpoint to post new images
 app.get('/images', main.getImages); // endpoint to get list of images
 
 app.listen(3000, function () {
