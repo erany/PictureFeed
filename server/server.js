@@ -28,7 +28,13 @@ app.set('keepExtensions',  true);
 
 
 app.route('/images').post(function(req, res, next) {
+	console.log('%s %s %s', req.method, req.url, req.path);
+	
 	main.addImage ; 
+	
+	console.log('%s', req.files);
+	
+	next();
 })
 
 
