@@ -14,9 +14,9 @@ app.use(bodyParser.json());
 app.set('uploadDir',  __dirname + '/uploads');
 app.set('keepExtensions',  true);
 
-
 //app.use(express.methodOverride());
 //app.use(app.router);
+
 app.use(express.static(path.join(__dirname, './uploads')));
 
 app.post('/images', main.addImage); // endpoint to post new images
