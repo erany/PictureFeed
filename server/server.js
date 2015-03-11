@@ -4,21 +4,26 @@ var express = require('express'),
     main = require('./main'),
 	bodyParser = require('body-parser'),
 	multer = require('multer') , 
+	cookieParser = require('cookie-parser') , 
+	errorHandler = require('errorhandler'), 
 	//logger = require('morgan') , 
     app = express();
 
 //app.use(logger("dev"));
 
+app.use(cookieParser()) ;
+app.use(errorHandler());
+app.use(express.static(path.join(__dirname, './uploads')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-app.set('uploadDir',  __dirname + '/uploads');
-app.set('keepExtensions',  true);
+app.use(multer({ dest:  __dirname + '/uploads'}));
 
 //app.use(express.methodOverride());
 //app.use(app.router);
 
-app.use(express.static(path.join(__dirname, './uploads')));
+app.set('uploadDir',  __dirname + '/uploads');
+app.set('keepExtensions',  true);
+
 
 app.post('/images', main.addImage); // endpoint to post new images
 app.get('/images', main.getImages); // endpoint to get list of images
