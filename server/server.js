@@ -3,6 +3,7 @@ var express = require('express'),
     path = require('path'),
     main = require('./main'),
 	bodyParser = require('body-parser'),
+	multer = require('multer') , 
 	//logger = require('morgan') , 
     app = express();
 
